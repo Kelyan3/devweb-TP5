@@ -58,3 +58,24 @@ Le code d'erreur "ENOENT" s'affiche grâce à la librairie "fs" qui indique que 
 ### Question 1.5 - Donner le code de requestListener() modifié avec gestion d'erreur en async/await.
 
 [Voir le code](https://github.com/Kelyan3/devweb-TP5/blob/main/server-http.mjs#L7-L18)
+
+### Question 1.6 - Indiquer ce que cette commande a modifié dans votre projet.
+
+Les commandes suivantes :
+```txt
+npm install cross-env --save
+npm install nodemon --save-dev
+```
+Elles ont créées un dossier node_modules contenant tous les packages installés.
+De plus, les fichiers "package.json" et "package-lock.json" ont été modifiés pour s'adapter à leur installation.
+
+### Question 1.7 - Quelles sont les différences entre les scripts http-dev et http-prod ?
+
+Leurs différences sont :
+- La définition de la variable d'environnement NODE_DEV qui change :
+  > "development" pour l'éxécution du script `npm run http-dev`
+  > "production" pour l'exécution du script `npm run http-prod`
+
+- Le script http-dev utilise [Nodemon](https://nodemon.io/), qui permet le redémarrage automatique de notre serveur et qui surveille le moindre changement dans le code source. Quant au script http-prod, celui-ci ne possède pas ces fonctionnalités de surveillance et de redémarrage automatique (que l'utilisateur doit faire manuellement).
+
+- http-dev utilise la dépendance de développement nodemon (commande "nodemon"), celle-ci est définie dans le fichier "package.json" dans la section "devDependencies". En revanche, le script http-prod, n'utilise que Node.js (commande "node") pour l'exécution de l'application.

@@ -1,0 +1,3 @@
+# Ignore tous les dossiers et fichiers concernant nodejs.
+node_modules/*
+package-lock.json
