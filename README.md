@@ -10,6 +10,7 @@ Liste des en-têtes :
 - Keep-Alive: timeout=5
 - Transfer-Encoding: chunked
 
+
 ### Question 1.2 - Donner la nouvelle liste des en-têtes de la réponse HTTP du serveur.
 
 En remplaçant l'ancien code :
@@ -35,9 +36,11 @@ On obtient cette nouvelle liste des en-têtes :
 - Date: Sun, 21 Sep 2025 04:16:15 GMT
 - Keep-Alive: timeout=5
 
+
 ### Question 1.3 - Que contient la réponse reçue par le client ?
 
 Dans notre cas, puisque le fichier "index.html" n'existe pas, le client ne reçoit aucune réponse.
+
 
 ### Question 1.4 - Quelle est l'erreur affichée dans la console ? Retrouver [ici](https://nodejs.org/api) le code d'erreur affiché.
 
@@ -55,9 +58,11 @@ Error: ENOENT: no such file or directory, open 'C:\Users\Kelyan\Documents\DEV_WE
 
 Le code d'erreur "ENOENT" s'affiche grâce à la librairie "fs" qui indique que le fichier n'existe pas car le chemin spécifié ne trouve pas ce fichier.
 
+
 ### Question 1.5 - Donner le code de requestListener() modifié avec gestion d'erreur en async/await.
 
 [Voir le code](https://github.com/Kelyan3/devweb-TP5/blob/main/server-http.mjs#L7-L18)
+
 
 ### Question 1.6 - Indiquer ce que cette commande a modifié dans votre projet.
 
@@ -69,6 +74,7 @@ npm install nodemon --save-dev
 Elles ont créées un dossier node_modules contenant tous les packages installés.
 De plus, les fichiers "package.json" et "package-lock.json" ont été modifiés pour s'adapter à leur installation.
 
+
 ### Question 1.7 - Quelles sont les différences entre les scripts http-dev et http-prod ?
 
 Leurs différences sont :
@@ -79,3 +85,11 @@ Leurs différences sont :
 - Le script http-dev utilise [Nodemon](https://nodemon.io/), qui permet le redémarrage automatique de notre serveur et qui surveille le moindre changement dans le code source. Quant au script http-prod, celui-ci ne possède pas ces fonctionnalités de surveillance et de redémarrage automatique (que l'utilisateur doit faire manuellement).
 
 - http-dev utilise la dépendance de développement nodemon (commande "nodemon"), celle-ci est définie dans le fichier "package.json" dans la section "devDependencies". En revanche, le script http-prod, n'utilise que Node.js (commande "node") pour l'exécution de l'application.
+
+
+### Question 1.8 - Donner les codes HTTP reçus par votre navigateur pour chacune des 4 pages précédentes.
+
+- `http://localhost:8000/index.html` : 200 (OK)
+- `http://localhost:8000/random.html` : 200 (OK)
+- `http://localhost:8000/` : 404 (Not Found)
+- `http://localhost:8000/dont-exist` : Code 404 (Not Found)

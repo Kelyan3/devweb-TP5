@@ -4,16 +4,45 @@ import fs from "node:fs/promises";
 const host = "localhost";
 const port = 8000;
 
-async function requestListener(_request, response) {
+async function requestListener(request, response) {
+  response.setHeader("Content-Type", "text/html");
   try {
     const contents = await fs.readFile("index.html", "utf8");
-    response.setHeader("Content-Type", "text/html");
-    response.writeHead(200);
-    response.end(contents);
+    const urlRequest = request.url.split("/");
+    switch (urlRequest[1]) {
+      case "index.html":
+      case "": {
+        response.writeHead(200);
+        return response.end(contents);
+      }
+      case "random.html": {
+        response.writeHead(200);
+        return response.end(`<html><p>${Math.floor(100 * Math.random())}</p></html>`);
+      }
+      case "random": {
+        if (urlRequest.length === 3) {
+          const nb = Number(urlRequest[2]);
+          let htmlContents = "<html>";
+          for (let index = 0; index < nb; index++)
+            htmlContents += `${Math.floor(100 * Math.random())}<br>`;
+          htmlContents += "</html>";
+
+          response.writeHead(200);
+          return response.end(htmlContents);
+        } else {
+          response.writeHead(400);
+          return response.end(`<html><p>400: BAD REQUEST</p></html>`);
+        }
+      }
+      default: {
+        response.writeHead(404);
+        return response.end(`<html><p>404: NOT FOUND</p></html>`);
+      }
+    }
   } catch (error) {
     console.error(error);
     response.writeHead(500);
-    response.end("Error 500");
+    return response.end(`<html><p>500: INTERNAL SERVER ERROR</p></html>`);
   }
 }
 
