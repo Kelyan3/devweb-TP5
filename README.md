@@ -143,7 +143,34 @@ L'option par défaut est "index".
 ### Question 2.6 - Visiter la page d'accueil puis rafraichir (Ctrl + R) et ensuite forcer le rafraichissement (Ctrl + Shift + R). Quels sont les codes HTTP sur le fichier style.css ? Justifier.
 
 Il faudra décocher l'option "Disable cache" dans la catégorie "Network" lors de l'inspection de la page pour voir le code HTTP changé.
-En utilisant le raccourci "Ctrl + R", on obtient le code "304"
-En utilisant le raccourci "Ctrl + Shift + R", on obtient le code "200".
+- En utilisant le raccourci "Ctrl + R", on obtient le code "304"
+- En utilisant le raccourci "Ctrl + Shift + R", on obtient le code "200".
 Les codes HTTP sont différents car un rafraîchissement normal (Ctrl + R) va utiliser le cache, tandis que un rafraîchissement forcé (Ctrl + Shift + R) ignore le cache.
 
+### Question 2.7 - Vérifier que l'affichage change bien entre le mode "production" et le mode "development".
+
+Mode `production` :
+```txt
+Error 400
+
+Error 400 [Bad Request] (Paramètre non valide : il faut un nombre entier)
+```
+
+Mode `development` :
+```txt
+Error 400
+
+Error 400 [Bad Request] (Paramètre non valide : il faut un nombre entier)
+
+BadRequestError: Error 400 [Bad Request] (Paramètre non valide : il faut un nombre entier)
+    at file:///C:/Users/Kelyan/Documents/DEV_WEB/devweb-TP5/server-express.mjs:23:17
+    at Layer.handleRequest (C:\Users\Kelyan\Documents\DEV_WEB\devweb-TP5\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Kelyan\Documents\DEV_WEB\devweb-TP5\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Kelyan\Documents\DEV_WEB\devweb-TP5\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Kelyan\Documents\DEV_WEB\devweb-TP5\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Kelyan\Documents\DEV_WEB\devweb-TP5\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Kelyan\Documents\DEV_WEB\devweb-TP5\node_modules\router\index.js:295:15
+    at param (C:\Users\Kelyan\Documents\DEV_WEB\devweb-TP5\node_modules\router\index.js:600:14)
+    at param (C:\Users\Kelyan\Documents\DEV_WEB\devweb-TP5\node_modules\router\index.js:610:14)
+    at processParams (C:\Users\Kelyan\Documents\DEV_WEB\devweb-TP5\node_modules\router\index.js:664:3)
+```
