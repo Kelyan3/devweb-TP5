@@ -92,7 +92,7 @@ Leurs différences sont :
 - `http://localhost:8000/index.html` : 200 (OK)
 - `http://localhost:8000/random.html` : 200 (OK)
 - `http://localhost:8000/` : 404 (Not Found)
-- `http://localhost:8000/dont-exist` : Code 404 (Not Found)
+- `http://localhost:8000/dont-exist` : 404 (Not Found)
 
 
 ## Partie II
@@ -140,7 +140,7 @@ app.use(express.static("static"));
 ```
 L'option par défaut est "index".
 
-### Question 2.6 - Visiter la page d'accueil puis rafraichir (Ctrl + R) et ensuite forcer le rafraichissement (Ctrl + Shift + R). Quels sont les codes HTTP sur le fichier style.css ? Justifier.
+### Question 2.6 - Visiter la page d'accueil puis rafraîchir (Ctrl + R) et ensuite forcer le rafraîchissement (Ctrl + Shift + R). Quels sont les codes HTTP sur le fichier style.css ? Justifier.
 
 Il faudra décocher l'option "Disable cache" dans la catégorie "Network" lors de l'inspection de la page pour voir le code HTTP changé.
 - En utilisant le raccourci "Ctrl + R", on obtient le code "304"
