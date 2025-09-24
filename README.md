@@ -145,6 +145,7 @@ L'option par défaut est "index".
 Il faudra décocher l'option "Disable cache" dans la catégorie "Network" lors de l'inspection de la page pour voir le code HTTP changé.
 - En utilisant le raccourci "Ctrl + R", on obtient le code "304"
 - En utilisant le raccourci "Ctrl + Shift + R", on obtient le code "200".
+
 Les codes HTTP sont différents car un rafraîchissement normal (Ctrl + R) va utiliser le cache, tandis que un rafraîchissement forcé (Ctrl + Shift + R) ignore le cache.
 
 ### Question 2.7 - Vérifier que l'affichage change bien entre le mode "production" et le mode "development".
