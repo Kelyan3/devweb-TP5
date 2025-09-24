@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import createError from "http-errors";
 
 const host = "localhost";
 const port = 8000;
@@ -17,7 +18,9 @@ app.get(["/", "/index.html"], async function (request, response, next) {
 });
 
 app.get("/random/:nb", async function (request, response, next) {
-  const length = Number(request.params.nb);
+  const length = Number.parseInt(request.params.nb, 10);
+  if (Number.isNaN(length))
+    return next(createError(400, "Error 400 [Bad Request] (Paramètre non valide : il faut un nombre entier)"));
   const numbers = Array.from({ length }, () => Math.floor(100 * Math.random()));
   const welcome = `${length} nombres aléatoires :`;
   return response.render("random", { numbers, welcome });
