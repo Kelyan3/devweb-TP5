@@ -15,20 +15,16 @@ async function requestListener(request, response) {
         response.writeHead(200);
         return response.end(contents);
       }
-      case "random.html": {
-        response.writeHead(200);
-        return response.end(`<html><p>${Math.floor(100 * Math.random())}</p></html>`);
-      }
       case "random": {
         if (urlRequest.length === 3) {
           const nb = Number(urlRequest[2]);
-          let htmlContents = "<html>";
-          for (let index = 0; index < nb; index++)
-            htmlContents += `${Math.floor(100 * Math.random())}<br>`;
-          htmlContents += "</html>";
+          let randContent = "<body>";
+          for (let i = 0; i < nb; i++)
+            randContent += `<li>${Math.floor(100 * Math.random())}</li>`;
+          randContent += "</body>";
 
           response.writeHead(200);
-          return response.end(htmlContents);
+          return response.end(randContent);
         } else {
           response.writeHead(400);
           return response.end(`<html><p>400: BAD REQUEST</p></html>`);

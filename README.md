@@ -93,3 +93,41 @@ Leurs différences sont :
 - `http://localhost:8000/random.html` : 200 (OK)
 - `http://localhost:8000/` : 404 (Not Found)
 - `http://localhost:8000/dont-exist` : Code 404 (Not Found)
+
+
+## Partie II
+
+### Question 2.1 - Donner les URL des documentation de chacun des modules installés par la commande précédente.
+
+- Documentation du module [express](https://expressjs.com/en/api.html)
+- Documentation du module [http-errors](https://www.npmjs.com/package/http-errors)
+- Documentation du module [loglevel](https://www.npmjs.com/package/loglevel)
+- Documentation du module [morgan](https://www.npmjs.com/package/morgan)
+
+
+### Question 2.2 - Vérifier que les 3 routes fonctionnent.
+
+Après avoir exécuté la commande `npm run express-dev` :
+- `localhost:8000` affiche "Hello World!"
+- `localhost:8000/index.html` affiche "Hello World!"
+- `localhost:800/random/15` affiche une liste de 15 nombres aléatoires (on peut remplacer 15 par n'importe quelle valeur).
+
+### Question 2.3 - Lister les en-têtes des réponses fournies par Express. Lesquelles sont nouvelles par rapport au serveur HTTP ?
+
+Les en-têtes des réponses fournies par Express sont :
+- **Accept-Ranges: bytes**
+- **Cache-Control: public, max-age=0**
+- Connection: keep-alive
+- Content-Length: 165
+- Content-Type: text/html; charset=utf-8
+- Date: Mon, 22 Sep 2025 06:19:46 GMT
+- **Etag: W/"a5-1996a9da8a5"**
+- Keep-Alive: timeout=5
+- **Last-Modified: Sun, 21 Sep 2025 04:52:21 GMT**
+- **X-Powered-By: Express**
+
+Les réponses qui sont en **gras** sont celles qui sont nouvelles par rapport au serveur HTTP.
+
+### Question 2.4 - Quand l'événement "listening" est-il déclenché ?
+
+L'événement "listening" se déclenche lorsque le serveur Express a fini sa configuration de l'hôte et du port spécifié dans le code.
