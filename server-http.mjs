@@ -7,24 +7,28 @@ const port = 8000;
 async function requestListener(request, response) {
   response.setHeader("Content-Type", "text/html");
   try {
-    const contents = await fs.readFile("index.html", "utf8");
     const urlRequest = request.url.split("/");
     switch (urlRequest[1]) {
-      case "index.html":
-      case "": {
+      case "":
+      case "index.html": {
+        const indexContents = await fs.readFile("index.html", "utf8");
         response.writeHead(200);
-        return response.end(contents);
+        return response.end(indexContents);
+      }
+      case "random.html": {
+        response.writeHead(200);
+        return response.end(`<html><p>${Math.floor(100 * Math.random())}</p></html>`);
       }
       case "random": {
         if (urlRequest.length === 3) {
           const nb = Number(urlRequest[2]);
-          let randContent = "<body>";
+          let randContents = "<body>";
           for (let i = 0; i < nb; i++)
-            randContent += `<li>${Math.floor(100 * Math.random())}</li>`;
-          randContent += "</body>";
+            randContents += `<li>${Math.floor(100 * Math.random())}</li>`;
+          randContents += "</body>";
 
           response.writeHead(200);
-          return response.end(randContent);
+          return response.end(randContents);
         } else {
           response.writeHead(400);
           return response.end(`<html><p>400: BAD REQUEST</p></html>`);
