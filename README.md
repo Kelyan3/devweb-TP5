@@ -79,8 +79,8 @@ De plus, les fichiers "package.json" et "package-lock.json" ont été modifiés 
 
 Leurs différences sont :
 - La définition de la variable d'environnement NODE_DEV qui change :
-  > "development" pour l'éxécution du script `npm run http-dev`
-  > "production" pour l'exécution du script `npm run http-prod`
+  * "development" pour l'éxécution du script `npm run http-dev`
+  * "production" pour l'exécution du script `npm run http-prod`
 
 - Le script http-dev utilise [Nodemon](https://nodemon.io/), qui permet le redémarrage automatique de notre serveur et qui surveille le moindre changement dans le code source. Quant au script http-prod, celui-ci ne possède pas ces fonctionnalités de surveillance et de redémarrage automatique (que l'utilisateur doit faire manuellement).
 
@@ -131,3 +131,19 @@ Les réponses qui sont en **gras** sont celles qui sont nouvelles par rapport au
 ### Question 2.4 - Quand l'événement "listening" est-il déclenché ?
 
 L'événement "listening" se déclenche lorsque le serveur Express a fini sa configuration de l'hôte et du port spécifié dans le code.
+
+### Question 2.5 - Indiquer quelle est l'option (activée par défaut) qui redirige "/" vers "/index.html".
+
+Grâce à ligne de code :
+```javascript
+app.use(express.static("static"));
+```
+L'option par défaut est "index".
+
+### Question 2.6 - Visiter la page d'accueil puis rafraichir (Ctrl + R) et ensuite forcer le rafraichissement (Ctrl + Shift + R). Quels sont les codes HTTP sur le fichier style.css ? Justifier.
+
+Il faudra décocher l'option "Disable cache" dans la catégorie "Network" lors de l'inspection de la page pour voir le code HTTP changé.
+En utilisant le raccourci "Ctrl + R", on obtient le code "304"
+En utilisant le raccourci "Ctrl + Shift + R", on obtient le code "200".
+Les codes HTTP sont différents car un rafraîchissement normal (Ctrl + R) va utiliser le cache, tandis que un rafraîchissement forcé (Ctrl + Shift + R) ignore le cache.
+
